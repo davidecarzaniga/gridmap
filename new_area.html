@@ -1,0 +1,9 @@
+<a href='#/' class='btn'>BACK</a>
+<form>
+   <input type="text" name="name" placeholder="nome" ng-model="area.name" />
+   <input type="text" name="row" placeholder="row" ng-model="area.row" />
+   <input type="text" name="column" placeholder="column" ng-model="area.column" />
+   <input type="text" name="width" placeholder="width" ng-model="area.width" />
+   <select ng-model="area.bgcolor" ng-options="c.name as c.name for c in colors"></select>
+   <button class="btn" ng-click="saveArea()">SALVA</button>
+</form>

@@ -1,0 +1,12 @@
+<a href='#/' class='btn'>BACK</a>
+<form>
+    <input type="text" name="name" placeholder="nome" ng-model="creature.name" />
+    <input type="text" name="row" placeholder="row" ng-model="creature.row" />
+    <input type="text" name="column" placeholder="column" ng-model="creature.column" />
+    <input type="text" name="width" placeholder="width" ng-model="creature.width" />
+    <select ng-model="creature.bgcolor" ng-options="c.name as c.name for c in colors"></select>
+    <p ng-repeat="(skey, s) in statuses">
+        <input type="checkbox"  name="{{skey}}" ng-model="creature.statuses[skey]"  >{{skey}}
+    </p>
+    <button class="btn" ng-click="saveCreature()">SALVA</button>
+</form>
