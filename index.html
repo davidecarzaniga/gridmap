@@ -6,31 +6,53 @@
         <title>GridMap</title>   
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"></link>
         <link href="css/main.css" rel="stylesheet" media="screen"></link>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     </head>
-    <body>
+    <body onload="init();">
         <div id='grid-wrapper'></div>
         <div id='config-menu' ng-controller="MyCtrl">
             <div class="row">
-                <div ng-view class="span3" style="position: absolute; z-index: 99;"></div>
-                <div class="span9" style="margin-left: 250px; position: relative;">
+                <div style="width: 240px; float: left; padding-left: 20px;">
+                    <div ng-view class="main_menu"></div>
+                </div>
+                <div id="grid-container" style="margin-left: 280px; position: relative;">
                     <div ng-repeat="r in [] | range:settings.rows">
                         <div class="grid-item" ng-repeat="c in [] | range:settings.columns" ng-style="myStyle($parent.$index,$index)">{{$index + 1}},{{$parent.$index + 1}}</div>
                     </div>
-                    <div class="creature" ng-repeat="c in creatures" ng-style="myCreatureStyle( c )">
+                    <div class="creature" ng-repeat="c in creatures" ng-style="myCreatureStyle( c )" rel="tooltip" title="{{c.notes}}" data-index="{{$index}}" my-draggable>
                         <div class="statuses-wrapper">
-                            <div class="status" ng-repeat="(skey, s) in c.statuses | filter:checkEnabled" ng-style="myStatusStyle( skey )"></div>
+                            <div class="status" ng-repeat="(skey, s) in c.statuses" ng-show="s" ng-style="myStatusStyle( skey )"></div>
                         </div>
-                        {{c.name}}
+                        <a href="#/creature/edit/{{$index}}">{{c.name}}</a>
                     </div>
-                    <div class="area" ng-repeat="a in areas" ng-style="myAreaStyle( a )">{{a.name}}</div>
+                    <div class="area" ng-repeat="a in areas" ng-style="myAreaStyle( a )"rel="tooltip" title="{{a.notes}}"><a href="#/area/edit/{{$index}}">{{a.name}}</a></div>
                 </div>
             </div>
         </div>
         
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="js/scripts.js"></script>
+        <script>
+            function init(){
+                $('body').tooltip({
+                    selector: '[rel="tooltip"]',
+                    placement: 'left'
+                });
+            }
+        </script>
+        
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-38381770-1']);
+            _gaq.push(['_setDomainName', 'davidecarzaniga.com']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
     </body>
 </html>

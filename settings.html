@@ -1,7 +1,39 @@
-<a href='#/' class='btn'>BACK</a>
+<p><a href='#/' class='btn'><i class="icon icon-arrow-left"></i> BACK</a></p>
+
 <form>
-   <input type="text" name="columns" placeholder="columns" ng-model="settings_copy.columns" />
-   <input type="text" name="rows" placeholder="rows" ng-model="settings_copy.rows" />
-   <input type="text" name="width" placeholder="width" ng-model="settings_copy.width" />
-   <button class="btn" ng-click="save()">SALVA</button>
+    <legend>Settings</legend>
+    
+    <p>
+        <label for="input-columns">Number of columns</label>
+        <input type="text" id="input-columns" name="columns" placeholder="columns" ng-model="settings_copy.columns" />
+    </p>
+    
+    <p>
+        <label for="input-rows">Number of rows</label>
+        <input type="text" id="input-rows" name="rows" placeholder="rows" ng-model="settings_copy.rows" />
+    </p>
+    
+    <p>
+        <label for="input-width">Square width</label>
+        <input type="text" id="input-width" name="width" placeholder="width" ng-model="settings_copy.width" />
+    </p>
+
+    <p>&nbsp;</p>
+    <p>
+        <button class="btn btn-success btn-large btn-block" ng-click="save()"><i class="icon icon-white icon-ok-sign"></i> SAVE</button>
+    </p>
 </form>
+
+ <p style="padding-top: 30px;">
+    <label>Satuses</label>
+    <span ng-repeat="(skey, s) in statuses" class="clearfix" style="display: block; margin-bottom: 10px;">
+        <span style="display: inline-block; height: 10px; width: 10px; margin-right: 10px; background:{{s.color}};"></span> {{skey}}
+        <a class="btn btn-mini pull-right" ng-click="removeStatus(skey)" title="Delete status" rel="tooltip"><i class="icon-trash"></i></a> 
+        <!--<a class="btn btn-mini pull-right" href="#" title="Edit status" rel="tooltip"><i class="icon-edit"></i></a>-->
+    </span>
+    <form ng-submit="addStatus()">
+        <input type="text" ng-model="statusText" size="30" placeholder="add new status here" style="width: 90px; float:left;">
+        <select ng-model="statusColor" ng-options="c.name as c.name for c in colors" style="width: 65px; float:left;"></select>
+        <button class="btn" type="submit" style="width: 50px; float:left;">Add</button>
+    </form>
+</p>

@@ -1,9 +1,44 @@
-<a href='#/' class='btn'>BACK</a>
+<p><a href='#/' class='btn'><i class="icon icon-arrow-left"></i> BACK</a></p>
+
 <form>
-   <input type="text" name="name" placeholder="nome" ng-model="area.name" />
-   <input type="text" name="row" placeholder="row" ng-model="area.row" />
-   <input type="text" name="column" placeholder="column" ng-model="area.column" />
-   <input type="text" name="width" placeholder="width" ng-model="area.width" />
-   <select ng-model="area.bgcolor" ng-options="c.name as c.name for c in colors"></select>
-   <button class="btn" ng-click="saveArea()">SALVA</button>
+    <legend>Area</legend>
+    
+    <p>
+        <label for="input-nome">Name</label>
+        <input id="input-nome" type="text" name="name" placeholder="nome" ng-model="area.name" />
+    </p>
+    
+    <p>
+        <label for="input-width">Width (squares)</label>
+        <input type="text" id="input-width" name="width" placeholder="width" ng-model="area.width" />
+    </p>
+    
+    <p>
+        <label for="input-height">Height (squares)</label>
+        <input type="text" id="input-height" name="height" placeholder="height" ng-model="area.height" />
+    </p>
+    
+    <p>
+        <label for="input-row">Starting row</label>
+        <input id="input-row" type="text" name="row" placeholder="row" ng-model="area.row" />
+    </p>
+        
+    <p>
+        <label for="input-column">Starting column</label>
+        <input id="input-column" type="text" name="column" placeholder="column" ng-model="area.column" />
+    </p>
+        
+    <p>
+        <label for="input-color">Color</label>
+        <select id="input-color" ng-model="area.bgcolor" ng-options="c.name as c.name for c in colors"></select>
+    </p>
+    
+    <p>
+        <label for="input-notes">Notes</label>
+        <textarea id="input-notes" type="text" name="notes" placeholder="notes" ng-model="area.notes" ></textarea>
+    </p>
+        
+    <p>
+        <button class="btn btn-success btn-large btn-block" ng-click="saveArea()"><i class="icon icon-white icon-ok-sign"></i> SAVE</button>
+    </p>
 </form>

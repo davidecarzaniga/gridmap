@@ -1,8 +1,21 @@
+<p><a href='#/creature' class='btn btn-primary btn-large btn-block'><i class="icon icon-white icon-plus-sign"></i> New marker</a></p>
+<p><a href='#/area' class='btn btn-primary btn-large btn-block'><i class="icon icon-white icon-stop"></i> New area</a></p>
+<p><a href='#/settings' class='btn btn-primary btn-large btn-block'><i class="icon icon-white icon-tasks"></i> Settings</a></p>
+
+<div style="height: 50px;"></div>
+
+<h4>Markers:</h4>
 <ul class="unstyled">
     <li ng-repeat="cr in creatures">
         <a href="#/creature/edit/{{$index}}">{{cr.name}}</a>
     </li>
 </ul>
-<a href='#/creature' class='btn'>Add marker</a>
-<a href='#/area' class='btn'>Add area</a>
-<a href='#/settings' class='btn'>Settings</a>
+
+<div style="height: 20px;"></div>
+
+<h4>Areas:</h4>
+<ul class="unstyled">
+    <li ng-repeat="ar in areas">
+        <a href="#/area/edit/{{$index}}">{{ar.name}}</a>
+    </li>
+</ul>
