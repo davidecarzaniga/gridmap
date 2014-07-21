@@ -43,9 +43,9 @@ function MyCtrl($scope, $location) {
     ];
     
     $scope.statuses = {
-        'stunned': {color: 'red'},
-        'dazed': {color: 'green'},
-        'blinded': {color: 'yellow'}
+        'status1': {color: 'red'},
+        'status2': {color: 'green'},
+        'status3': {color: 'yellow'}
     };
     
     $scope.myStyle = function(row, column) {
